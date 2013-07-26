@@ -1,7 +1,7 @@
 Natural Language Toolkit for C# (csnltk)   zirrusc.net
 =====================
 
-NLTK -- the Natural Language Toolkit -- is a suite of open source
+csnltk -- the Natural Language Toolkit for C# -- is a suite of open source
 modules for C#, data sets and tutorials supporting research and
 development in Natural Language Processing for C#.
 
