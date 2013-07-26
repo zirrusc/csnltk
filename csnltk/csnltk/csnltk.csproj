@@ -39,8 +39,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Align\AlignedSent.cs" />
+    <Compile Include="Align\Alignment.cs" />
+    <Compile Include="Align\IBMModel1.cs" />
+    <Compile Include="Collocations\AbstractCollocationFinder.cs" />
+    <Compile Include="Collocations\Collocations.cs" />
+    <Compile Include="Collocations\TrigramCollocationFinder.cs" />
+    <Compile Include="Data\BufferedGzipFile.cs" />
+    <Compile Include="Data\FileSystemPathPointer.cs" />
+    <Compile Include="Data\DataProcessing.cs" />
+    <Compile Include="Data\GzipFileSystemPathPointer.cs" />
+    <Compile Include="Data\PathPointer.cs" />
     <Compile Include="Info.cs" />
-    <Compile Include="Init.cs" />
+    <Compile Include="Csnltk.cs" />
+    <Compile Include="Probability\ConditionalFreqDist.cs" />
+    <Compile Include="Probability\ConditionalProbDist.cs" />
+    <Compile Include="Probability\ConditionalProbDistI.cs" />
+    <Compile Include="Probability\CrossValidationProbDist.cs" />
+    <Compile Include="Probability\DictionaryConditionalProbDist.cs" />
+    <Compile Include="Probability\DictionaryProbDist.cs" />
+    <Compile Include="Probability\ELEProbDist.cs" />
+    <Compile Include="Probability\FreqDist.cs" />
+    <Compile Include="Probability\SimpleGoodTuringProbDist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
