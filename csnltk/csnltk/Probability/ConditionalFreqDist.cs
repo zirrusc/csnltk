@@ -16,5 +16,32 @@ namespace csnltk.Probability
 		{
 
 		}
+
+		public void Plot(IEnumerable<string> args, IEnumerable<string> kwargs)
+		{
+			// PlotForm
+		}
+
+		public void Tabulate(IEnumerable<string> args, IEnumerable<string> kwargs)
+		{
+			// PlotForm
+		}
+
+		void SortKeysByValue()
+		{
+
+		}
+
+		public List<T> GetKeys()
+		{
+
+		}
+
+		public List<T> GetValues()
+		{
+
+		}
+
+		public 
 	}
 }
