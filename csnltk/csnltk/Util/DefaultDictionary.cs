@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 
 namespace csnltk.Util
 {
+	//UNDONE
 	public class DefaultDictionaryItem<K, V>
 	{
 		public K Key { set; get; }
