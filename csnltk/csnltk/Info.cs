@@ -20,7 +20,7 @@ namespace csnltk
 			@"The Natural Language Toolkit for C# (csnltk) is a C# library for
 natural language processing.  NLTK requires .NET Framework 4.0 or higher";
 
-		public const string[] Keywords = { 
+		public static readonly string[] Keywords = { 
 			"NLP", "CL", "natural language processing",
             "computational linguistics", "parsing", "tagging",
             "tokenizing", "syntax", "linguistics", "language",

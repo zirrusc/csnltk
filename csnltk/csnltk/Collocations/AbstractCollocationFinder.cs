@@ -7,6 +7,9 @@ namespace csnltk.Collocations
 {
 	class AbstractCollocationFinder
 	{
-		public AbstractCollocationFinder(object wordFd
+		public AbstractCollocationFinder(object wordFd)
+		{
+
+		}
 	}
 }

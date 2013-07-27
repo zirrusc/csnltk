@@ -32,6 +32,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Align\AlignedSent.cs" />
     <Compile Include="Align\Alignment.cs" />
     <Compile Include="Align\IBMModel1.cs" />
     <Compile Include="Collocations\AbstractCollocationFinder.cs" />
@@ -50,18 +52,46 @@
     <Compile Include="Data\DataProcessing.cs" />
     <Compile Include="Data\GzipFileSystemPathPointer.cs" />
     <Compile Include="Data\PathPointer.cs" />
+    <Compile Include="Display\PlotForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Display\PlotForm.Designer.cs">
+      <DependentUpon>PlotForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Info.cs" />
     <Compile Include="Csnltk.cs" />
-    <Compile Include="Probability\ConditionalFreqDist.cs" />
-    <Compile Include="Probability\ConditionalProbDist.cs" />
-    <Compile Include="Probability\ConditionalProbDistI.cs" />
-    <Compile Include="Probability\CrossValidationProbDist.cs" />
-    <Compile Include="Probability\DictionaryConditionalProbDist.cs" />
-    <Compile Include="Probability\DictionaryProbDist.cs" />
-    <Compile Include="Probability\ELEProbDist.cs" />
-    <Compile Include="Probability\FreqDist.cs" />
-    <Compile Include="Probability\SimpleGoodTuringProbDist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Text\ConcordanceIndex.cs" />
+    <Compile Include="Text\ContextIndex.cs" />
+    <Compile Include="Text\Text.cs" />
+    <Compile Include="Text\TextCollection.cs" />
+    <Compile Include="Text\TokenSearcher.cs" />
+    <Compile Include="Toolbox\StandardFormat.cs" />
+    <Compile Include="Toolbox\ToolboxData.cs" />
+    <Compile Include="Toolbox\ToolboxSettings.cs" />
+    <Compile Include="Tree\ImmutableMultiParentedTree.cs" />
+    <Compile Include="Tree\ImmutableParentedTree.cs" />
+    <Compile Include="Tree\ImmutableProbabilisticTree.cs" />
+    <Compile Include="Tree\ImmutableTree.cs" />
+    <Compile Include="Tree\MultiParentedTree.cs" />
+    <Compile Include="Tree\ParentedTree.cs" />
+    <Compile Include="Tree\ProbabilisticMixIn.cs" />
+    <Compile Include="Tree\ProbabilisticTree.cs" />
+    <Compile Include="Tree\Tree.cs" />
+    <Compile Include="Tree\TreeTransforms.cs" />
+    <Compile Include="Util\AbstractLazySequence.cs" />
+    <Compile Include="Util\Index.cs" />
+    <Compile Include="Util\LazyConcatenation.cs" />
+    <Compile Include="Util\LazyEnumerate.cs" />
+    <Compile Include="Util\LazyMap.cs" />
+    <Compile Include="Util\LazySubsequence.cs" />
+    <Compile Include="Util\LazyZip.cs" />
+    <Compile Include="Util\OrderedDict.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Display\PlotForm.resx">
+      <DependentUpon>PlotForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace csnltk.Probability
 {
-	class FreqDist<T, int> : Dictionary<T, int>
+	class FreqDist<T> : Dictionary<T, int>
 	{
 		public int N { get; private set; }
 		

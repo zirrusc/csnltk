@@ -9,11 +9,13 @@ namespace csnltk.Probability
 	{
 		public int N()
 		{
+			throw new NotImplementedException();
 
 		}
 
 		public List<T> Conditions()
 		{
+			throw new NotImplementedException();
 
 		}
 
@@ -34,14 +36,14 @@ namespace csnltk.Probability
 
 		public List<T> GetKeys()
 		{
-
+			throw new NotImplementedException();
 		}
 
 		public List<T> GetValues()
 		{
+			throw new NotImplementedException();
 
 		}
 
-		public 
 	}
 }
