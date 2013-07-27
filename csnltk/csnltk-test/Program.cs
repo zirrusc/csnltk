@@ -11,22 +11,25 @@ namespace csnltk_test
 	{
 		static void Main(string[] args)
 		{
-			var list = new List<Tuple<int, int>>();
-			list.Add(new Tuple<int, int>(0, 0));
-			list.Add(new Tuple<int, int>(0, 1));
-			list.Add(new Tuple<int, int>(1, 2));
-			list.Add(new Tuple<int, int>(2, 2));
+			var alignment = new Alignment();
+			alignment.Add("0-2 1-3 2-1 3-0");
 
-			Alignment a = new Alignment(list);
+			AlignedSent align = new AlignedSent(
+				new string[] { "klein", "ist", "das", "Haus" },
+				new string[] { "The", "house", "is", "small" },
+				alignment);
+
+			Console.WriteLine(align.Alignment.ToString());
+
 			
-			var r = a.Range();
-			string b = "";
-			foreach (var item in r)
-			{
-				b += item.ToString() + ", ";
-			}
-			b.TrimEnd(',', ' ');
-			Console.WriteLine(b);
+			//var r = a.Range();
+			//string b = "";
+			//foreach (var item in r)
+			//{
+			//	b += item.ToString() + ", ";
+			//}
+			//b.TrimEnd(',', ' ');
+			//Console.WriteLine(b);
 			Console.ReadKey();
 		}
 	}

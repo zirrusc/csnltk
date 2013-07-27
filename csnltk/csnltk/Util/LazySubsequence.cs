@@ -5,7 +5,13 @@ using System.Text;
 
 namespace csnltk.Util
 {
-	class LazySubsequence
+	public class LazySubsequence
 	{
+		public const int MinSize = 100;
+
+		public LazySubsequence()
+		{
+
+		}
 	}
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using csnltk.Metrics;
 
 namespace csnltk.Align
 {
@@ -20,9 +21,9 @@ namespace csnltk.Align
 			{
 				for (int i = 0; i < value.Length; i++)
 				{
-					if (!(0 <= value[i][0] && value[i][0] < Words.Length))
+					if (!(0 <= value[i].Item1 && value[i].Item1 < Words.Length))
 						throw new IndexOutOfRangeException("Alignment is outside boundary of words");
-					if (!(0 <= value[i][0] && value[i][0] < Mots.Length))
+					if (!(0 <= value[i].Item1 && value[i].Item1 < Mots.Length))
 						throw new IndexOutOfRangeException("Alignment is outside boundary of mots");
 				}
 
@@ -37,42 +38,39 @@ namespace csnltk.Align
 
 		Alignment _alignment;
 
-		string encoding;
-
-		public AlignedSent(string[] words, string[] mots, Alignment alignment, string encoding = Info.Encoding)
+		public AlignedSent(string[] words, string[] mots, Alignment alignment)
 		{
 			this.Words = words;
 			this.Mots = mots;
 			this.Alignment = alignment;
-			this.encoding = encoding;
 		}
 
-		string repr()
-		{
-			StringBuilder words = new StringBuilder();
-			StringBuilder mots = new StringBuilder();
+		//string Representation()
+		//{
+		//	StringBuilder words = new StringBuilder();
+		//	StringBuilder mots = new StringBuilder();
 
-			foreach (var w in Words)
-			{
-				words.Append("[");
-				for (int i = 0; i < w.Length; i++)
-				{
-					words.Append(string.Format("'%s'", words[i]));
-				}
-				words.Append("]");
-			}
-			foreach (var m in Mots)
-			{
-				mots.Append("[");
-				for (int i = 0; i < m.Length; i++)
-				{
-					mots.Append(string.Format("'%s'", mots[i]));
-				}
-				mots.Append("]");
-			}
+		//	foreach (var w in Words)
+		//	{
+		//		words.Append("[");
+		//		for (int i = 0; i < w.Length; i++)
+		//		{
+		//			words.Append(string.Format("'{0}'", words[i]));
+		//		}
+		//		words.Append("]");
+		//	}
+		//	foreach (var m in Mots)
+		//	{
+		//		mots.Append("[");
+		//		for (int i = 0; i < m.Length; i++)
+		//		{
+		//			mots.Append(string.Format("'{0}' ", mots[i]));
+		//		}
+		//		mots.Append("]");
+		//	}
 
-			return string.Format("AlignedSent(%s, %s, %s, %r", words.ToString(), mots.ToString(), Alignment.ToString());
-		}
+		//	return string.Format("AlignedSent({0}, {1}, {2}, {3}", words.ToString(), mots.ToString(), Alignment.ToString());
+		//}
 
 		public override string ToString()
 		{
@@ -93,7 +91,7 @@ namespace csnltk.Align
 			}
 			target.Append("...");
 
-			return string.Format("<AlignedSent: '%s' -> '%s'>", source.ToString(), target.ToString());
+			return string.Format("<AlignedSent: '{0}' -> '{1}'>", source.ToString(), target.ToString());
 		}
 
 		public float? GetErrorRate(Alignment reference, Alignment possible)
@@ -101,27 +99,23 @@ namespace csnltk.Align
 			if (possible == null)
 				possible = reference;
 
-			return (1.0 - ((Alignment & reference) + (Alignment & possible)) / (Alignment.ToString().Length + reference.ToString().Length));
+			return (float?)(1.0 - ((Alignment.And(Alignment, reference).Length) +
+				(Alignment.And(Alignment, possible)).Length) / 
+				(Alignment.ToString().Length + reference.ToString().Length));
 		}
 
-		public AlignedSent Invert()
+		public double? Precision(Alignment reference)
 		{
-			return new AlignedSent(Mots, Words, Alignment.Invert());
+			if (reference == null)
+				throw new ArgumentNullException("reference");
+
+
+			return Scopes.Precision<Tuple<int, int>>(reference, Alignment);
 		}
 
-		public float? Precision(Alignment reference)
+		public double? Recall(Alignment reference)
 		{
-			
-		}
-
-		public float? Recall(Alignment reference)
-		{
-
-		}
-
-		public string UnicodeRepresentation()
-		{
-
+			return Scopes.Recall<Tuple<int, int>>(reference, Alignment);
 		}
 	}
 }

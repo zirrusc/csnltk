@@ -1,5 +1,6 @@
 ﻿/*
  * nltk.align.Alignment
+ * 
  * created: 2013-07-27
  * version: 1
  */
@@ -148,6 +149,37 @@ namespace csnltk.Align
 			base.Add(new Tuple<int, int>(a, b));
 		}
 
+		public void Add(string text)
+		{
+			var item = text.Split(' ');
+			for (int i = 0; i < item.Length; i++)
+			{
+				var value = item[i].Split('-');
+				if (value.Length != 2)
+					throw new ArgumentException("Argument required integer-interger format.");
+				int a, b;
+				if (int.TryParse(value[0], out a) && int.TryParse(value[1], out b))
+					Add(a, b);
+				else
+					throw new ArgumentException("Arguments must be integer-interger format.");
+			}
+		}
+
+		public Alignment And(Alignment target)
+		{
+			return And(this, target);
+		}
+
+		public static Alignment And(Alignment a, Alignment b)
+		{
+			Alignment r = new Alignment();
+			for (int i = 0; i < b.Length; i++)
+			{
+				if (a.IndexOf(b[i]) >= 0)
+					r.Add(b[i]);
+			}
+			return r;
+		}
 	}
 }
 

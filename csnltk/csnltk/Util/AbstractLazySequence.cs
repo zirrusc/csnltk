@@ -5,7 +5,12 @@ using System.Text;
 
 namespace csnltk.Util
 {
-	class AbstractLazySequence
+	public abstract class AbstractLazySequence
 	{
+		public abstract object Length();
+
+		public abstract object IterateFrom();
+
+
 	}
 }

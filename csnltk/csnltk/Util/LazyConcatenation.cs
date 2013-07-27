@@ -5,7 +5,16 @@ using System.Text;
 
 namespace csnltk.Util
 {
-	class LazyConcatenation
+	class LazyConcatenation : AbstractLazySequence
 	{
+		public override object Length()
+		{
+			throw new NotImplementedException();
+		}
+
+		public override object IterateFrom()
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

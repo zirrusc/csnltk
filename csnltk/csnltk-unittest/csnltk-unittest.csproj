@@ -53,8 +53,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Align.Alignment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Align.AlignedSent.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\csnltk\csnltk.csproj">

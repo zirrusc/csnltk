@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Align\AlignedSent.cs" />
     <Compile Include="Align\Alignment.cs" />
     <Compile Include="Align\IBMModel1.cs" />
     <Compile Include="Collocations\AbstractCollocationFinder.cs" />
@@ -60,6 +61,7 @@
     </Compile>
     <Compile Include="Info.cs" />
     <Compile Include="Csnltk.cs" />
+    <Compile Include="Metrics\Scopes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Text\ConcordanceIndex.cs" />
     <Compile Include="Text\ContextIndex.cs" />
@@ -92,6 +94,9 @@
     <EmbeddedResource Include="Display\PlotForm.resx">
       <DependentUpon>PlotForm.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
