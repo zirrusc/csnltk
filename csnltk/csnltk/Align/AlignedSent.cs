@@ -7,7 +7,9 @@ using csnltk.Metrics;
 namespace csnltk.Align
 {
 	/// <summary>
-	/// nltk.Alignment
+	/// nltk.align.AlignedSent<br />
+	/// Return an aligned sentence object, which encapsulates two sentences along 
+	/// with an Alignment between them.
 	/// </summary>
 	public class AlignedSent : Alignment
 	{
@@ -38,6 +40,12 @@ namespace csnltk.Align
 
 		Alignment _alignment;
 
+		/// <summary>
+		/// Return an aligned sentence object, which encapsulates two sentences along with an Alignment between them.
+		/// </summary>
+		/// <param name="words">source language words</param>
+		/// <param name="mots">target language words</param>
+		/// <param name="alignment">the word-level alignments between the source and target language</param>
 		public AlignedSent(string[] words, string[] mots, Alignment alignment)
 		{
 			this.Words = words;
@@ -94,25 +102,40 @@ namespace csnltk.Align
 			return string.Format("<AlignedSent: '{0}' -> '{1}'>", source.ToString(), target.ToString());
 		}
 
-		public float? GetErrorRate(Alignment reference, Alignment possible)
+		/// <summary>
+		/// Return the Alignment Error Rate (AER) of an aligned sentence with respect to a “gold standard” reference AlignedSent.
+		/// </summary>
+		/// <param name="reference">A “gold standard” reference aligned sentence.</param>
+		/// <param name="possible">A “gold standard” reference of possible alignments (defaults to reference if None)</param>
+		/// <returns>Return an error rate between 0.0 (perfect alignment) and 1.0 (no alignment).</returns>
+		public double? ErrorRate(Alignment reference, Alignment possible)
 		{
 			if (possible == null)
 				possible = reference;
 
-			return (float?)(1.0 - ((Alignment.And(Alignment, reference).Length) +
+			return 1.0 - ((Alignment.And(Alignment, reference).Length) +
 				(Alignment.And(Alignment, possible)).Length) / 
-				(Alignment.ToString().Length + reference.ToString().Length));
+				(Alignment.ToString().Length + reference.ToString().Length);
 		}
 
+		/// <summary>
+		/// Return the precision of an aligned sentence with respect to a “gold standard” reference AlignedSent.
+		/// </summary>
+		/// <param name="reference">A “gold standard” reference aligned sentence.</param>
+		/// <returns></returns>
 		public double? Precision(Alignment reference)
 		{
 			if (reference == null)
 				throw new ArgumentNullException("reference");
 
-
 			return Scopes.Precision<Tuple<int, int>>(reference, Alignment);
 		}
 
+		/// <summary>
+		/// Return the recall of an aligned sentence with respect to a “gold standard” reference AlignedSent.
+		/// </summary>
+		/// <param name="reference">A “gold standard” reference aligned sentence.</param>
+		/// <returns></returns>
 		public double? Recall(Alignment reference)
 		{
 			return Scopes.Recall<Tuple<int, int>>(reference, Alignment);

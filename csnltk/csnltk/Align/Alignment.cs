@@ -1,11 +1,4 @@
-﻿/*
- * nltk.align.Alignment
- * 
- * created: 2013-07-27
- * version: 1
- */
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +8,11 @@ namespace csnltk.Align
 {
 	/// <summary>
 	/// nltk.align.Alignment
+	/// A storage class for representing alignment between two sequences, s1, s2. 
+	/// In general, an alignment is a set of tuples of the form (i, j, ...) 
+	/// representing an alignment between the i-th element of s1 and the j-th element of s2. 
+	/// Tuples are extensible (they might contain additional data, 
+	/// such as a boolean to indicate sure vs possible alignments).
 	/// </summary>
 	public class Alignment : ObservableCollection<Tuple<int, int>>
 	{
@@ -63,6 +61,10 @@ namespace csnltk.Align
 			Length = max;
 		}
 
+		/// <summary>
+		/// Return an Alignment object, being the inverted mapping.
+		/// </summary>
+		/// <returns></returns>
 		public List<Tuple<int, int>> Invert()
 		{
 			var result = CloneList();
@@ -73,6 +75,12 @@ namespace csnltk.Align
 			return result;
 		}
 
+		/// <summary>
+		/// Work out the range of the mapping from the given positions. 
+		/// If no positions are specified, compute the range of the entire mapping.
+		/// </summary>
+		/// <param name="positions"></param>
+		/// <returns></returns>
 		public List<int> Range(List<int> positions = null)
 		{
 			var image = new List<int>();
