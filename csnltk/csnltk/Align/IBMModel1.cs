@@ -46,12 +46,23 @@ namespace csnltk.Align
 			var numProbs = englishWords.Count / foreignWords.Count;
 
 			double defaultProb = 1.0 / englishWords.Count;
-			var t = DefaultDict(() => { return defaultProb; });
+			var t=new DefaultDictionary<string, string>();
 
 			bool globally_converged = false;
 			while (!globally_converged)
 			{
-				//UNDONE
+				var count = new DefaultDictionary<string, float>();
+				var total = new DefaultDictionary<string, float>();
+
+				for (int i = 0; i < AlignedSents.Count; i++)
+				{
+					var s_total = new Dictionary<string, float>();
+					foreach (var item in AlignedSents[i].Words)
+					{
+						//s_total[item] += t[item];
+						//UNDONE
+					}
+				}
 			}
 			Debug.Unindent();
 		}

@@ -82,7 +82,7 @@
     <Compile Include="Tree\Tree.cs" />
     <Compile Include="Tree\TreeTransforms.cs" />
     <Compile Include="Util\AbstractLazySequence.cs" />
-    <Compile Include="Util\DefaultDictionary.cs" />
+    <Compile Include="Embedded\Collections\DefaultDictionary.cs" />
     <Compile Include="Util\Index.cs" />
     <Compile Include="Util\LazyConcatenation.cs" />
     <Compile Include="Util\LazyEnumerate.cs" />
